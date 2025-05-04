@@ -1,0 +1,70 @@
+{
+  "groups": [
+    {
+      "id": 1,
+      "image": "images/penglawha.jpg",
+      "areas": [
+        {
+          "word": "penguin",
+          "shape": "poly",
+          "coords": [353, 782, 590, 730, 628, 595, 710, 522, 888, 560, 1139, 804, 1180, 621, 1237, 553, 1342, 570, 1491, 823, 1306, 1000, 1201, 858, 737, 850, 587, 789, 329, 952, 28, 965, 65, 761, 9, 682, 9, 586, 88, 641, 85, 525, 209, 457, 315, 498, 379, 575, 460, 638, 396, 702],
+          "zh": "企鹅",
+          "spelling": "/ˈpɛŋɡwɪn/",
+          "example": "The penguin swims in the ocean.",
+          "audio": "https://dict.youdao.com/dictvoice?audio=penguin&type=2"
+        },
+        {
+          "word": "glacier",
+          "shape": "poly",
+          "coords": [837, 427, 15, 437, 73, 135, 776, 251],
+          "zh": "冰川",
+          "spelling": "/ˈɡleɪʃər/",
+          "example": "The glacier is melting due to climate change.",
+          "audio": "https://ssl.gstatic.com/dictionary/static/sounds/20200429/glacier--_gb_1.mp3"
+        },
+        {
+          "word": "whale",
+          "shape": "poly",
+          "coords": [832, 106, 961, 310, 918, 479, 975, 534, 1010, 394, 1167, 569, 1309, 496, 1251, 295, 1445, 170, 1379, 143, 1182, 231, 1126, 190, 1030, 102, 862, 51],
+          "zh": "鲸鱼",
+          "spelling": "/weɪl/",
+          "example": "The whale is the largest animal in the ocean.",
+          "audio": "https://ssl.gstatic.com/dictionary/static/sounds/20200429/whale--_gb_1.mp3"
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "image": "images/cameagshu.jpg",
+      "areas": [
+        {
+          "word": "camera",
+          "shape": "rect",
+          "coords": [569, 359, 936, 602],
+          "zh": "相机",
+          "spelling": "/ˈkæm.ər.ə/",
+          "example": "I took a picture with my camera.",
+          "audio": "https://ssl.gstatic.com/dictionary/static/sounds/20200429/camera--_gb_1.mp3"
+        },
+        {
+          "word": "eagle",
+          "shape": "poly",
+          "coords": [69, 84, 206, 328, 326, 381, 590, 54, 526, 53, 364, 193, 160, 58],
+          "zh": "鹰",
+          "spelling": "/ˈiː.ɡl/",
+          "example": "The eagle soared high in the sky.",
+          "audio": "https://ssl.gstatic.com/dictionary/static/sounds/20200429/eagle--_gb_1.mp3"
+        },
+        {
+          "word": "shuttlecock",
+          "shape": "poly",
+          "coords": [549, 805, 359, 673, 127, 406, 7, 519, 3, 869, 54, 915, 293, 895, 396, 981, 516, 946],
+          "zh": "羽毛球",
+          "spelling": "/ˈʃʌt.əl.kɒk/",
+          "example": "She hit the shuttlecock over the net.",
+          "audio": "https://ssl.gstatic.com/dictionary/static/sounds/20200429/shuttlecock--_gb_1.mp3"
+        }
+      ]
+    }
+  ]
+}

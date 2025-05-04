@@ -1,0 +1,179 @@
+body {
+    text-align: center;
+    font-family: Arial, sans-serif;
+    background-color: #f0f8ff;
+}
+
+.image-container {
+    margin: 20px auto;  /* 上下 20px 左右自动居中 */
+    max-width: 120px;
+    padding: 8px;
+    display: flex;      /* 新增 */
+    justify-content: center; /* 水平居中 */
+    align-items: center;     /* 垂直居中 */
+    background: white;
+    border-radius: 5px;
+    box-shadow: 0 0 5px rgba(0,0,0,0.1);
+}
+
+/* #target-image 部分 */
+#target-image {
+    width: 200px;       /* 原300px的1/4≈75px，取整80px */
+    height: 150px;      /* 原200px的1/4=50px，按比例调整为60px */
+    object-fit: cover; /* 保持图片比例 */
+    border: 1px solid #ccc;
+    border-radius: 3px;
+}
+
+#game-board {
+    display: grid;
+    grid-template-columns: repeat(10, 40px);
+    gap: 3px;
+    justify-content: center;
+    margin: 20px auto;
+}
+
+.cell {
+    width: 40px;
+    height: 40px;
+    border: 2px solid #666;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    cursor: pointer;
+    background-color: white;
+    transition: background-color 0.3s;
+}
+
+/* 状态类需要放在基础类之后 */
+.cell.selected {
+    background-color: #ffd700;
+}
+
+.cell.correct {
+    background-color: #90ee90;
+}
+
+.start-cell {
+    background-color: #98fb98 !important;
+    font-weight: bold;
+    box-shadow: 0 0 10px rgba(152, 251, 152, 0.5);
+}
+
+#next-btn {
+    padding: 10px 20px;
+    font-size: 18px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 20px;
+  }
+  
+  #next-btn:hover {
+    background-color: #45a049;
+  }
+  
+  #accuracy-popup {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: white;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0,0,0,0.2);
+    text-align: center;
+    z-index: 1000;
+  }
+  
+  .popup-content button {
+    padding: 10px 20px;
+    margin-top: 15px;
+    background-color: #2196F3;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+
+  /* 自动跳转提示弹窗 */
+.auto-popup {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: rgba(255, 255, 255, 0.95);
+    padding: 20px 30px;
+    border-radius: 10px;
+    box-shadow: 0 0 15px rgba(0,0,0,0.2);
+    text-align: center;
+    z-index: 1000;
+    animation: fadeIn 0.3s;
+}
+
+.auto-popup.correct {
+    border: 2px solid #4CAF50;
+}
+
+.auto-popup.error {
+    border: 2px solid #f44336;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translate(-50%, -45%); }
+    to { opacity: 1; transform: translate(-50%, -50%); }
+}
+
+#tips-btn {
+    padding: 8px 20px;
+    margin: 10px;
+    background-color: #2196F3;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.hint-all {
+    background-color: #ffeb3b; /* 黄色表示所有可能首字母 */
+}
+.hint-correct {
+    background-color: #4CAF50; /* 绿色表示正确起始点 */
+}
+
+/* 正确率弹窗新增统计信息 */
+#accuracy-popup p {
+    margin: 10px 0;
+    color: #666;
+    font-size: 0.9em;
+}
+
+.popup-content h2 {
+    color: #2196F3;
+    margin-bottom: 15px;
+}
+/* 新增辅助提示样式 */
+.assistance {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+    padding: 15px;
+    background-color: #f0f8ff;
+    border-radius: 8px;
+    border: 1px solid #b0e0e6;
+  }
+  
+  .assist-icon {
+    width: 40px;
+    height: 40px;
+    margin-right: 15px;
+  }
+  
+  .assist-text {
+    font-size: 16px;
+    color: #2c3e50;
+    font-weight: 500;
+  }

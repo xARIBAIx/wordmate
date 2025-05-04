@@ -1,0 +1,155 @@
+body {
+    text-align: center;
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+}
+
+#game-area {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center;
+    margin: 20px;
+}
+
+.card {
+    width: 150px;
+    height: 150px;
+    background-color: white;
+    border-radius: 10px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+/* 新增辅助提示样式 */
+.assistance {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+  padding: 15px;
+  background-color: #f0f8ff;
+  border-radius: 8px;
+  border: 1px solid #b0e0e6;
+}
+
+.assist-icon {
+  width: 40px;
+  height: 40px;
+  margin-right: 15px;
+}
+
+.assist-text {
+  font-size: 16px;
+  color: #2c3e50;
+  font-weight: 500;
+}
+
+.card img {
+    max-width: 100%;
+    max-height: 100%;
+    border-radius: 10px;
+}
+
+#score {
+    font-size: 24px;
+    color: #333;
+}
+/* 自定义弹窗样式 */
+#custom-alert {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+}
+
+#custom-alert.hidden {
+    display: none;
+}
+
+.alert-content {
+    background: white;
+    padding: 30px 50px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    text-align: center;
+}
+
+.alert-content p {
+    font-size: 20px;
+    margin: 0;
+    color: #333;
+}
+/* 整体布局 */
+#game-container {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+    gap: 20px;
+  }
+  
+  /* 左右列样式 */
+  .column {
+    width: 48%; /* 留出间隙 */
+    border: 2px solid #ddd;
+    border-radius: 10px;
+    padding: 10px;
+    background: white;
+  }
+  
+  .column h2 {
+    text-align: center;
+    color: #666;
+    margin: 10px 0;
+  }
+  
+  /* 九宫格布局 */
+  .grid-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 3列 */
+    grid-template-rows: repeat(2, 1fr);    /* 3行 */
+    gap: 10px;
+    min-height: 500px; /* 固定高度保持整齐 */
+  }
+  
+  /* 卡片尺寸调整 */
+  .card {
+    width: 100%;      /* 填充网格单元格 */
+    height: 150px;    /* 固定高度 */
+    transition: opacity 0.3s; /* 添加渐隐效果 */
+  }
+
+  /* 已匹配的空白卡片 */
+/* 在 css/style.css 中添加空白卡片样式 */
+.card.matched {
+  background-color: #f0f0f0 !important;
+  border: 2px dashed #ccc;
+  animation: fadeOut 0.5s; /*添加渐隐动画*/
+}
+
+@keyframes fadeOut {
+  from { opacity: 1; }
+  to { opacity: 0.5; }
+}
+#next-level {
+  padding: 10px 20px;
+  background: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  margin-top: 15px;
+}
+
+#next-level:hover {
+  background: #45a049;
+}

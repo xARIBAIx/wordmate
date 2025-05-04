@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>单词迷宫</title>
+    <link rel="stylesheet" href="wordmaze.css">
+</head>
+<body>
+    <!-- 新增辅助提示 -->
+    <div class="assistance">
+        <img src="as.png" alt="assistance" class="assist-icon">
+        <span class="assist-text">这是一个单词迷宫游戏，请根据图片在下面的迷宫中拼写出单词吧！注意要从第一个字母开始点击！
+            （如果没有思路可以按几下提示按钮喔）</span>
+    </div>
+    <div class="image-container">
+        <img src="/images/camera.png" alt="目标动物" id="target-image" />
+    </div>
+    <div id="game-board"></div>
+    <script src="wordmaze.js"></script>
+</body>
+</html>
+<button id="tips-btn" onclick="handleTips()">显示提示</button>

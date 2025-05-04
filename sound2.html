@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>单词听力排序游戏</title>
+    <link rel="stylesheet" href="sound2.css">
+</head>
+<body>
+
+
+    <div class="container">
+        <!-- 新增辅助提示 -->
+        <div class="assistance">
+            <img src="as.png" alt="assistance" class="assist-icon">
+            <span class="assist-text">接下来请根据你所听到的单词，拖动图片进行排序！</span>
+        </div>
+
+        
+        <!-- 原有其他内容保持不变 -->
+
+        <div class="header">
+            <button id="speaker">播放声音</button>
+            <button id="restart">重新开始</button>
+            <button id="next-btn" disabled>下一题</button>
+        </div>
+        
+        <div class="drop-zones">
+            <div class="drop-zone" data-order="1"></div>
+            <div class="drop-zone" data-order="2"></div>
+            <div class="drop-zone" data-order="3"></div>
+        </div>
+
+        <div class="images">
+            <img src="images/glacier.png" alt="Glacier" class="draggable" draggable="true" data-word="glacier">
+            <img src="images/eagle.png" alt="Eagle" class="draggable" draggable="true" data-word="eagle">
+            <img src="images/camera.png" alt="Camera" class="draggable" draggable="true" data-word="camera">
+        </div>
+        
+        <script src="sound2.js"></script>
+
+        <!-- 计分显示区域 -->
+        <div id="result"></div>
+    </div>
+</body>
+</html>

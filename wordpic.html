@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>单词图片消消乐</title>
+    <link rel="stylesheet" href="./wordpic.css">
+</head>
+<body>
+  <div id="custom-alert" class="hidden">
+    <div class="alert-content">
+      <div id="alert-message"></div>
+    </div>
+  </div>
+  <div class="container">
+    <!-- 新增辅助提示 -->
+    <div class="assistance">
+        <img src="as.png" alt="assistance" class="assist-icon">
+        <span class="assist-text">这是一个消消乐游戏！只要将左边的单词和右边的图片成功配对点击，就能够消除这个单词！</span>
+    </div>
+    
+    <button id="restart">重新开始</button>
+    
+    <div id="game-container">
+        <div class="column" id="word-column">
+          <h2>单词区</h2>
+          <div class="grid-container" id="word-grid"></div>
+        </div>
+        
+        <div class="column" id="image-column">
+          <h2>图片区</h2>
+          <div class="grid-container" id="image-grid"></div>
+        </div>
+      </div>
+  
+      <div id="score">得分: 0</div>
+      <div id="custom-alert" class="hidden">
+        <div class="alert-content">
+          <p id="alert-message"></p >
+        </div>
+      </div>
+      
+      <script src="./wordpic.js"></script>
+  </body>
+  </html>
+</body>
+</html>

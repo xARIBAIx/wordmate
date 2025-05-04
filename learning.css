@@ -1,0 +1,112 @@
+/* 基础样式 */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    max-width: 1200px;
+    margin: 20px auto;
+    padding: 0 20px;
+    background-color: #f5f5f5;
+  }
+  
+  h1 {
+    color: #2c3e50;
+    text-align: center;
+    margin-bottom: 30px;
+  }
+  
+  /* 图片容器 */
+  .image-container {
+    position: relative;
+    margin: 20px 0;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  #wordImage {
+    width: 100%;
+    display: block;
+  }
+  
+  /* 热区悬停效果 */
+  area:hover {
+    cursor: pointer;
+    opacity: 0.8;
+  }
+  
+  /* 单词卡片 */
+  .word-card {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: white;
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
+    width: 320px;
+    z-index: 1000;
+    display: none;
+  }
+  
+  .word-card h2 {
+    color: #3498db;
+    margin-bottom: 15px;
+    font-size: 1.8em;
+  }
+  
+  .word-card p {
+    margin: 10px 0;
+    font-size: 1.1em;
+  }
+  
+  /* 按钮样式 */
+  .button-group {
+    margin-top: 20px;
+    display: flex;
+    gap: 10px;
+  }
+  
+  .button-group button {
+    flex: 1;
+    padding: 12px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.3s;
+  }
+  
+  .button-group button:nth-child(1) {
+    background: #3498db;
+    color: white;
+  }
+  
+  .button-group button:nth-child(1):hover {
+    background: #2980b9;
+  }
+  
+  .button-group button:nth-child(2) {
+    background: #e74c3c;
+    color: white;
+  }
+  
+  .button-group button:nth-child(2):hover {
+    background: #c0392b;
+  }
+  .assistant {
+    display: flex;
+    align-items: center; /* 垂直居中 */
+    margin-bottom: 20px; /* 与下面内容的间距 */
+  }
+  
+  .assistant-image {
+    width: 50px; /* 调整助手图像的宽度 */
+    height: auto; /* 保持纵横比 */
+    margin-right: 10px; /* 与文本的间距 */
+  }
+  
+  .dialogue-box {
+    background-color: #f0f0f0; /* 对话框背景颜色 */
+    border: 1px solid #ccc; /* 边框样式 */
+    border-radius: 10px; /* 圆角 */
+    padding: 10px; /* 内边距 */
+  }

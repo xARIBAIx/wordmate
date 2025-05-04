@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>互动单词学习</title>
+  <link rel="stylesheet" href="learning.css">
+</head>
+<body>
+  <!-- 页面结构保持不变 -->
+  <a href="home.html" class="back-home-btn">回到主页</a>
+  
+  <div class="assistant">
+    <img src="as.png" alt="助手" class="assistant-image">
+    <div class="dialogue-box">
+      <p id="guideText">请点击图片上的物品，来学习这张图片上的单词吧！ (0/3)</p>
+    </div>
+  </div>
+
+ 
+  <div id="nextButtonContainer" class="next-button-container"></div>
+  
+  <div class="image-container">
+    <!-- 图片和热区将由JavaScript动态生成 -->
+  </div>
+
+  <div id="wordCard" class="word-card">
+    <h2 id="wordTitle"></h2>
+    <p><strong>中文：</strong><span id="zhText"></span></p>
+    <p><strong>音标：</strong><span id="spellingText"></span></p>
+    <p><strong>例句：</strong><span id="exampleText"></span></p>
+    <div class="button-group">
+      <button onclick="speak()">🔊 发音</button>
+      <button onclick="closeCard()">✖ 关闭</button>
+    </div>
+  </div>
+
+  <script>
+    let currentGroupIndex = 0;
+    let learnedWords = new Set();
+    let wordsData = {};
+
+    // 数据加载（增强错误处理）
+    fetch('learning.json')
+      .then(response => {
+        if (!response.ok) throw new Error('HTTP错误');
+        return response.json();
+      })
+      .then(data => {
+        wordsData = data;
+        loadGroup(currentGroupIndex);
+      })
+      .catch(error => {
+        console.error('加载失败:', error);
+        alert('学习资料加载失败，请检查网络连接');
+      });
+
+    // 显示单词卡片（修复字段名）
+    function showWord(word) {
+      const currentGroup = wordsData.groups?.[currentGroupIndex];
+      if (!currentGroup) return;
+
+      const wordInfo = currentGroup.areas.find(w => w.word === word);
+      if (!wordInfo) {
+        alert('未找到单词信息');
+        return;
+      }
+
+      if (!learnedWords.has(word)) {
+        learnedWords.add(word);
+        updateProgress();
+      }
+
+      document.getElementById('wordTitle').textContent = word;
+      document.getElementById('zhText').textContent = wordInfo.zh;
+      document.getElementById('spellingText').textContent = wordInfo.spelling;
+      document.getElementById('exampleText').textContent = wordInfo.example;
+      document.getElementById('wordCard').style.display = 'block';
+    }
+
+    // 加载分组（修复坐标格式）
+    function loadGroup(groupIndex) {
+      if (!wordsData.groups || groupIndex >= wordsData.groups.length) {
+        console.error('无效的组索引');
+        return;
+      }
+
+      closeCard();
+      const group = wordsData.groups[groupIndex];
+      const imageContainer = document.querySelector('.image-container');
+      const mapName = `image-map-${groupIndex}`;
+
+      const areasHTML = group.areas.map(word => `
+        <area shape="${word.shape}" 
+              coords="${word.coords.join(',')}" 
+              alt="${word.word}" 
+              data-word="${word.word}"
+              onclick="showWord('${word.word.replace(/'/g, "\\'")}')"
+              onmouseover="showTooltip(event, '${word.zh}')"
+              onmouseout="hideTooltip()">
+      `).join('');
+
+      imageContainer.innerHTML = `
+        <img src="${group.image}" usemap="#${mapName}" class="learning-image">
+        <map name="${mapName}">${areasHTML}</map>
+      `;
+
+      learnedWords.clear();
+      updateProgress();
+    }
+
+    // 更新进度（修复字段名）
+    function updateProgress() {
+      const currentGroup = wordsData.groups?.[currentGroupIndex];
+      if (!currentGroup) return;
+
+      const total = currentGroup.areas.length;
+    const guideText = document.getElementById('guideText');
+    const nextButtonContainer = document.getElementById('nextButtonContainer');
+    
+    // 始终显示完整进度（删除对progress元素的引用）
+    guideText.textContent = 
+        learnedWords.size === total 
+        ? '恭喜学完所有单词！' 
+        : `请点击图片上的物品，来学习这张图片上的单词吧！ (${learnedWords.size}/${total})`;
+      
+      if (learnedWords.size === total) {
+        guideText.textContent = '恭喜学完所有单词！';
+        nextButtonContainer.innerHTML = currentGroupIndex < wordsData.groups.length - 1 ?
+          '<button class="next-button" onclick="nextGroup()">下一页 →</button>' :
+          '<button class="next-button" onclick="location.href=\'sound.html\'">完成学习！进入复习</button>';
+      } else {
+        /*guideText.textContent = `还有单词没有学完喔，请继续学习 (${learnedWords.size}/${total})`;*/
+        nextButtonContainer.innerHTML = '';
+      }
+    }
+
+    // 发音功能（适配新数据结构）
+    function speak() {
+      const word = document.getElementById('wordTitle').textContent;
+      const currentGroup = wordsData.groups?.[currentGroupIndex];
+      if (!currentGroup) return;
+
+      const targetWord = currentGroup.areas.find(w => w.word === word);
+      if (!targetWord?.audio) {
+        alert('该单词暂无发音资源');
+        return;
+      }
+
+      try {
+        new Audio(targetWord.audio).play();
+      } catch (error) {
+        console.error('播放失败:', error);
+        alert('发音失败，请检查网络连接');
+      }
+    }
+
+    // 其他辅助函数保持不变
+    function nextGroup() {
+      currentGroupIndex++;
+      loadGroup(currentGroupIndex);
+    }
+
+    function closeCard() {
+      document.getElementById('wordCard').style.display = 'none';
+    }
+
+    window.addEventListener('click', (e) => {
+      if (e.target === document.getElementById('wordCard')) {
+        closeCard();
+      }
+    });
+
+    
+  </script>
+</body>
+</html>
